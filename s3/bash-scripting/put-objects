@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+# Check for input argument *bucket name*
+if [ -z "$1" ]; then
+    echo "No Bucket Name"
+    exit 1
+fi
+
+BUCKET_NAME=$1
+
+# Create random files and upload to S3 bucket
+for i in {1..3}; do
+    FILE_NAME="random-file-$i.txt"
+    echo "This is file number $i" > $FILE_NAME
+    
+    echo "Uploading $FILE_NAME to $BUCKET_NAME"
+    aws s3api put-object --bucket $BUCKET_NAME --key $FILE_NAME --body $FILE_NAME
+    
+    # Remove the local file after upload
+    rm $FILE_NAME
+done
+
+echo "== All objects uploaded =="

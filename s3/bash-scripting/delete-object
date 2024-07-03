@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+# Check for input arguments (bucket name and object key)
+if [ -z "$1" ] || [ -z "$2" ]; then
+    echo "Usage: $0 <bucket-name> <object-key>"
+    exit 1
+fi
+
+BUCKET_NAME=$1
+OBJECT_KEY=$2
+
+# Function to delete a specific object in the bucket
+delete_object() {
+    echo "Deleting object: $OBJECT_KEY from bucket: $BUCKET_NAME"
+    aws s3api delete-object --bucket $BUCKET_NAME --key $OBJECT_KEY
+}
+
+# Call the function to delete the specific object
+delete_object

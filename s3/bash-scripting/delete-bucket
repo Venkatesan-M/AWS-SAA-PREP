@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+echo "== delete bucket"
+
+
+# Check for input argument *bucket name*
+if [ -z "$1" ]; then
+    echo "No Bucket Name"
+    exit 1
+fi
+
+
+# Create bucket with LocationConstraint
+aws s3api delete-bucket --bucket $1

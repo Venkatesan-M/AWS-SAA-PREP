@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+# List all S3 buckets with additional details, sort by CreationDate descending, and get the most recent one
+recent_bucket=$(aws s3api list-buckets --query "Buckets[].{Name: Name, CreationDate: CreationDate}" | jq -r 'sort_by(.CreationDate) | reverse | .[0] | "\(.Name) \(.CreationDate)"')
+
+if [ -z "$recent_bucket" ]; then
+    echo "No buckets found"
+else
+    echo "Most recently created bucket:"
+    echo "$recent_bucket"
+fi
+
+echo "== Recent Bucket fetched =="

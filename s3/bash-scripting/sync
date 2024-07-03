@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+# Check for input arguments *local directory* and *bucket name*
+if [ -z "$1" ] || [ -z "$2" ]; then
+    echo "Usage: $0 <local-directory> <bucket-name>"
+    exit 1
+fi
+
+LOCAL_DIR=$1
+BUCKET_NAME=$2
+
+# Sync local directory with S3 bucket
+aws s3 sync $LOCAL_DIR s3://$BUCKET_NAME
+
+echo "== Sync completed =="

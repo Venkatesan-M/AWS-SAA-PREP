@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+
+# Check for input argument (bucket name)
+if [ -z "$1" ]; then
+    echo "Usage: $0 <bucket-name>"
+    exit 1
+fi
+
+BUCKET_NAME=$1
+
+# Function to delete all objects in the bucket
+delete_objects() {
+    echo "Fetching objects in bucket $BUCKET_NAME..."
+
+    # List all objects in the bucket
+    objects=$(aws s3api list-objects --bucket $BUCKET_NAME --query "Contents[].Key" --output text)
+
+    # Check if any objects exist in the bucket
+    if [ -z "$objects" ]; then
+        echo "No objects found in bucket $BUCKET_NAME"
+        return
+    fi
+
+    # Iterate over each object and delete it
+    for object in $objects; do
+        echo "Deleting object: $object"
+        aws s3api delete-object --bucket $BUCKET_NAME --key $object
+    done
+
+    echo "All objects deleted from bucket $BUCKET_NAME"
+}
+
+# Call the function to delete objects
+delete_objects

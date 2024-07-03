@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+# Check for input arguments *bucket name* and *file name*
+if [ -z "$1" ] || [ -z "$2" ]; then
+    echo "Usage: $0 <bucket-name> <file-name>"
+    exit 1
+fi
+
+BUCKET_NAME=$1
+FILE_NAME=$2
+
+# Create a temporary directory for the file
+TEMP_DIR=$(mktemp -d)
+
+# Create the file in the temporary directory
+TEMP_FILE="$TEMP_DIR/$FILE_NAME"
+echo "This is the content of $FILE_NAME" > $TEMP_FILE
+
+# Upload the file to the S3 bucket
+echo "Uploading $TEMP_FILE to $BUCKET_NAME"
+aws s3api put-object --bucket $BUCKET_NAME --key $FILE_NAME --body $TEMP_FILE
+
+# Remove the temporary directory and the file after upload
+rm -r $TEMP_DIR
+
+echo "== $FILE_NAME uploaded to $BUCKET_NAME =="

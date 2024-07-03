@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+# List all S3 buckets with additional details and sort by CreationDate descending
+aws s3api list-buckets --query "Buckets[].{Name: Name, CreationDate: CreationDate}" | jq -r 'sort_by(.CreationDate) | reverse | .[] | "\(.Name) \(.CreationDate)"'
+
+echo "== Bucket list fetched and sorted by creation date =="
