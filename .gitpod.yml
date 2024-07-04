@@ -19,10 +19,3 @@ tasks:
       cd $THEIA_WORKSPACE_ROOT
     init: |
       gp env AWS_DEFAULT_REGION=ap-south-1
-
-  # Task to install Terraform CLI
-  # Reference: https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli
-  - name: terraform-cli
-    before: |
-      chmod u+x /workspace/AWS-SAA-PREP/s3/iac/terraform/terraform_cli
-      ./terraform_cli
