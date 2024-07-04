@@ -1,21 +1,24 @@
 tasks:
+  # Task to install general utilities
   - name: utils
     before: |
       sudo apt update
-      sudo apt-get install tree
+      sudo apt-get install -y tree
 
-  # https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
+  # Task to install AWS CLI
+  # Reference: https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
   - name: aws-cli
     env: 
       AWS_CLI_AUTO_PROMPT: on-partial
-    before: | 
-        cd /workspace
-        curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-        unzip awscliv2.zip
-        sudo ./aws/install
-        cd $THEIA_WORKSPACE_ROOT
+    before: |
+      cd /workspace
+      curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+      unzip awscliv2.zip
+      sudo ./aws/install
+      cd $THEIA_WORKSPACE_ROOT
 
-  # https://learn.microsoft.com/en-us/powershell/scripting/install/install-ubuntu?view=powershell-7.4
+  # Task to install PowerShell
+  # Reference: https://learn.microsoft.com/en-us/powershell/scripting/install/install-ubuntu?view=powershell-7.4
   - name: power-shell
     before: |
       sudo apt-get update
@@ -27,12 +30,13 @@ tasks:
       sudo apt-get update
       sudo apt-get install -y powershell
 
-  # https://docs.aws.amazon.com/powershell/latest/userguide/pstools-getting-set-up-windows.html
+  # Task to install AWS PowerShell modules
+  # Reference: https://docs.aws.amazon.com/powershell/latest/userguide/pstools-getting-set-up-windows.html
   - name: aws-pwsh-modules
     before: |
-      pwsh 
-      Install-Module -Name AWS.Tools.Installer
-      Install-AWSToolsModule AWS.Tools.S3 -CleanUp
-      # Install-AWSToolsModule AWS.Tools.EC2 -CleanUp
-      exit
-  # https://docs.aws.amazon.com/powershell/latest/reference/
+      pwsh -Command "
+        Install-Module -Name AWS.Tools.Installer -Force -Scope CurrentUser;
+        Install-AWSToolsModule AWS.Tools.S3 -CleanUp -Force -Scope CurrentUser;
+        # Uncomment the following line if you need the EC2 module
+        # Install-AWSToolsModule AWS.Tools.EC2 -CleanUp -Force -Scope CurrentUser;
+      "
