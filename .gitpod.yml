@@ -33,16 +33,16 @@ tasks:
       sudo apt-get update
       sudo apt-get install -y powershell
 
-  # Task to install AWS PowerShell modules
-  # Reference: https://docs.aws.amazon.com/powershell/latest/userguide/pstools-getting-set-up-windows.html
-  - name: aws-pwsh-modules
-    before: |
-      pwsh -Command "
-        Install-Module -Name AWS.Tools.Installer -Force -Scope CurrentUser;
-        Install-AWSToolsModule AWS.Tools.S3 -CleanUp -Force -Scope CurrentUser;
-        # Uncomment the following line if you need the EC2 module
-        # Install-AWSToolsModule AWS.Tools.EC2 -CleanUp -Force -Scope CurrentUser;
-      "
+  # # Task to install AWS PowerShell modules
+  # # Reference: https://docs.aws.amazon.com/powershell/latest/userguide/pstools-getting-set-up-windows.html
+  # - name: aws-pwsh-modules
+  #   before: |
+  #     pwsh -Command "
+  #       Install-Module -Name AWS.Tools.Installer -Force -Scope CurrentUser;
+  #       Install-AWSToolsModule AWS.Tools.S3 -CleanUp -Force -Scope CurrentUser;
+  #       # Uncomment the following line if you need the EC2 module
+  #       # Install-AWSToolsModule AWS.Tools.EC2 -CleanUp -Force -Scope CurrentUser;
+  #     "
 
   # Task to install Terraform CLI
   # Reference: https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli
