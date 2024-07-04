@@ -1,7 +1,10 @@
 tasks:
   - name: utils
     before: |
+      sudo apt update
       sudo apt-get install tree
+
+  # https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
   - name: aws-cli
     env: 
       AWS_CLI_AUTO_PROMPT: on-partial
@@ -11,3 +14,25 @@ tasks:
         unzip awscliv2.zip
         sudo ./aws/install
         cd $THEIA_WORKSPACE_ROOT
+
+  # https://learn.microsoft.com/en-us/powershell/scripting/install/install-ubuntu?view=powershell-7.4
+  - name: power-shell
+    before: |
+      sudo apt-get update
+      sudo apt-get install -y wget apt-transport-https software-properties-common
+      source /etc/os-release
+      wget -q https://packages.microsoft.com/config/ubuntu/$VERSION_ID/packages-microsoft-prod.deb
+      sudo dpkg -i packages-microsoft-prod.deb
+      rm packages-microsoft-prod.deb
+      sudo apt-get update
+      sudo apt-get install -y powershell
+
+  # https://docs.aws.amazon.com/powershell/latest/userguide/pstools-getting-set-up-windows.html
+  - name: aws-pwsh-modules
+    before: |
+      pwsh 
+      Install-Module -Name AWS.Tools.Installer
+      Install-AWSToolsModule AWS.Tools.S3 -CleanUp
+      # Install-AWSToolsModule AWS.Tools.EC2 -CleanUp
+      exit
+  # https://docs.aws.amazon.com/powershell/latest/reference/
