@@ -8,7 +8,7 @@ This project demonstrates how to perform various operations on Amazon S3 using A
 - PowerShell environment.
 - [Auto Complete on PowerShell](https://techcommunity.microsoft.com/t5/itops-talk-blog/autocomplete-in-powershell/ba-p/2604524)
 
-## Installing PowerShell on Ubuntu (DEB)
+## [Installing PowerShell on Ubuntu (DEB)](https://learn.microsoft.com/en-us/powershell/scripting/install/install-ubuntu?view=powershell-7.4)
 
 ```
         sudo apt-get update
