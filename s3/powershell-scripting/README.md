@@ -21,6 +21,18 @@ This project demonstrates how to perform various operations on Amazon S3 using A
         sudo apt-get install -y powershell
 ```
 
+- or you can just run the powershell_cli script file by
+
+
+```
+./powershell_cli
+```
+- to make it executable
+
+```
+chmod u+x powershell_cli
+```
+
 ## Get into PowerShell by
 
 ```
