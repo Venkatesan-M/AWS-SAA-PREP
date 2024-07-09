@@ -1,0 +1,11 @@
+name: s3-iac-pulumi
+runtime:
+  name: python
+  options:
+    toolchain: pip
+    virtualenv: venv
+description: A sample python project for testing AWS s3 bucket on pulumi
+config:
+  pulumi:tags:
+    value:
+      pulumi:template: aws-python
