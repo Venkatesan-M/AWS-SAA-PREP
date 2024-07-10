@@ -7,7 +7,7 @@ headers can be used as a data integrity check to verify that the data received i
 ### Note: For directory buckets, when you use Amazon Web Services SDKs, `CRC32` is the default checksum algorithm that’s used for performance.
 
 
-## Setup AWS S3 Bucket and Object
+## Setup AWS S3 Bucket and Upload an Object
 
 ### 1. Create a new AWS S3 bucket
 

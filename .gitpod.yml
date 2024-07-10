@@ -4,6 +4,7 @@ tasks:
     before: |
       sudo apt update
       sudo apt-get install -y tree
+      clear
 
   # Task to install AWS CLI
   # Reference: https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
@@ -17,5 +18,6 @@ tasks:
       unzip awscliv2.zip
       sudo ./aws/install
       cd $THEIA_WORKSPACE_ROOT
+      clear
     init: |
       gp env AWS_DEFAULT_REGION=ap-south-1
