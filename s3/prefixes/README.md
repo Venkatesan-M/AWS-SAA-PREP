@@ -1,6 +1,6 @@
 # AWS S3 Prefixes Examples
 
-This project demonstrates how to create an AWS S3 bucket, calculate various prefixes
+This project demonstrates how to create an AWS S3 bucket, handle prefixes
 
 ## Setup AWS S3 Bucket
 
