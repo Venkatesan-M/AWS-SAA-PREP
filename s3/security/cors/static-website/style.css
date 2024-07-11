@@ -1,0 +1,70 @@
+body {
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    align-items: center;
+    height: 100vh;
+    color: #000;
+    background-color: skyblue;
+    user-select: none;
+  }
+
+  body[theme=dark] {
+    background-color: #855988;
+    color: #fff;
+  }
+
+  #theme-toggle {
+    display: none;
+  }
+
+  #theme-toggle + label {
+    content: '';
+    display: inline-block;
+    cursor: pointer;
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    transition: all 0.3s ease-in-out;
+  }
+
+  #theme-toggle:not(:checked) + label {
+    background-color: gold;
+  }
+
+  #theme-toggle:checked + label {
+    background-color: transparent;
+    box-shadow: inset -18px -16px 1px 1px #fff;
+  }
+
+  .intro-text {
+    font-size: 1.6em;
+    font-family: monospace;
+    text-align: center;
+  }
+
+  .text-sun {
+    transition: color 0.5s ease-in;
+  }
+
+  .text-moon {
+    transition: color 0.5s ease-in;
+  }
+
+  body[theme=dark] .text-sun {
+    color: rgba(0, 0, 0, 0.2);
+  }
+
+  body[theme=dark] .text-moon {
+    color: rgba(255, 255, 255, 1);
+  }
+
+  body[theme=light] .text-sun {
+    color: rgba(0, 0, 0, 1);
+  }
+
+  body[theme=light] .text-moon {
+    color: rgba(255, 255, 255, 0.2);
+  }
