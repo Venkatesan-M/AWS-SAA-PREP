@@ -1,4 +1,6 @@
+# AWS S3 Storage Classes Examples
 
+This project demonstrates how to create an AWS S3 bucket, upload files with different storage classes, and clean up resources.
 
 ## Setup AWS S3 Bucket
 
