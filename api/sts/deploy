@@ -1,0 +1,4 @@
+aws cloudformation deploy \
+  --template-file ./template.yaml \
+  --stack-name sts-stack-aws-prep \
+  --capabilities CAPABILITY_IAM
