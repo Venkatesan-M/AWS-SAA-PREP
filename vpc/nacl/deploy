@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+echo "== deploy ec2 with nacl in a vpc via CFN"
+
+STACK_NAME="cfn-ec2-nacl"
+
+aws cloudformation deploy \
+--template-file template.yml \
+--capabilities CAPABILITY_IAM \
+--region ap-south-1 \
+--stack-name $STACK_NAME
