@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+echo "== delete ec2 with security group in a vpc via CFN"
+
+STACK_NAME="cfn-ec2-sgs"
+
+aws cloudformation delete-stack --stack-name $STACK_NAME --region ap-south-1
